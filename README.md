@@ -19,11 +19,14 @@ Repo-wide conventions: `global.json` (SDK + Microsoft.Testing.Platform runner) l
 ## Use as a template
 
 ```sh
-dotnet new install .
-dotnet new lorem-ipsum-webapp -n Acme.Shop
+git clone https://github.com/bottlenoselabs/template-app-dotnet-web.git
+dotnet new install ./template-app-dotnet-web
+
+# then, from any directory:
+dotnet new bottlenoselabs-app-dotnet-web -n Acme.Shop
 ```
 
-`LoremIpsum` is replaced everywhere with the name you pass. Lowercase `lorem-ipsum` (Docker names, database, volume) becomes a
+This creates an `Acme.Shop/` folder. `LoremIpsum` is replaced everywhere with the name you pass. Lowercase `lorem-ipsum` (Docker names, database, volume) becomes a
 dash-separated slug, for example `acme-shop`.
 
 ## Run
