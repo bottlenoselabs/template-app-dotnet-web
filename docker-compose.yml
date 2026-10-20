@@ -1,0 +1,49 @@
+name: lorem-ipsum
+
+services:
+  lorem-ipsum-postgres:
+    image: postgres:17-alpine
+    container_name: lorem-ipsum-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: lorem-ipsum
+      POSTGRES_USER: lorem-ipsum
+      POSTGRES_PASSWORD: lorem-ipsum
+    ports:
+      - "5432:5432"
+    volumes:
+      - lorem-ipsum-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lorem-ipsum -d lorem-ipsum"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  lorem-ipsum-api:
+    build:
+      context: .
+      dockerfile: src/LoremIpsum.Api/Dockerfile
+    container_name: lorem-ipsum-api
+    restart: unless-stopped
+    depends_on:
+      lorem-ipsum-postgres:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__Database: "Host=lorem-ipsum-postgres;Port=5432;Database=lorem-ipsum;Username=lorem-ipsum;Password=lorem-ipsum"
+    ports:
+      - "5117:8080"
+
+  lorem-ipsum-web:
+    build:
+      context: .
+      dockerfile: src/LoremIpsum.Web/Dockerfile
+    container_name: lorem-ipsum-web
+    restart: unless-stopped
+    depends_on:
+      - lorem-ipsum-api
+    ports:
+      - "5200:80"
+
+volumes:
+  lorem-ipsum-postgres-data:
