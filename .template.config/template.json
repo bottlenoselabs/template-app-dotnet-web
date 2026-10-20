@@ -11,7 +11,7 @@
     "Docker"
   ],
   "identity": "bottlenoselabs.App.DotNet.Web",
-  "name": "Layered .NET web app (minimal API + Blazor WASM + PostgreSQL)",
+  "name": "bottlenoselabs .NET Web App",
   "shortName": "bottlenoselabs-app-dotnet-web",
   "description": "A .NET 10 solution with a minimal API, EF Core/PostgreSQL, a MudBlazor WebAssembly client, xUnit tests, central package management, artifacts output, Docker Compose and CI.",
   "tags": {
