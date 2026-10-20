@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "bottlenoselabs",
+  "classifications": [
+    "Web",
+    "API",
+    "Blazor",
+    "WebAssembly",
+    "EF Core",
+    "PostgreSQL",
+    "Docker"
+  ],
+  "identity": "bottlenoselabs.WebApp.Template",
+  "name": "Layered .NET web app (minimal API + Blazor WASM + PostgreSQL)",
+  "shortName": "lorem-ipsum-webapp",
+  "description": "A .NET 10 solution with a minimal API, EF Core/PostgreSQL, a MudBlazor WebAssembly client, xUnit tests, central package management, artifacts output, Docker Compose and CI.",
+  "tags": {
+    "language": "C#",
+    "type": "solution"
+  },
+  "sourceName": "LoremIpsum",
+  "preferNameDirectory": true,
+  "symbols": {
+    "lowerName": {
+      "type": "derived",
+      "valueSource": "name",
+      "valueTransform": "slug",
+      "replaces": "lorem-ipsum",
+      "fileRename": "lorem-ipsum"
+    }
+  },
+  "forms": {
+    "lowerCase": {
+      "identifier": "lowercase"
+    },
+    "dashed": {
+      "identifier": "replace",
+      "pattern": "\\.",
+      "replacement": "-"
+    },
+    "slug": {
+      "identifier": "chain",
+      "steps": [
+        "lowerCase",
+        "dashed"
+      ]
+    }
+  },
+  "postActions": [
+    {
+      "description": "Make start.sh executable.",
+      "manualInstructions": [
+        {
+          "text": "Run: chmod +x start.sh"
+        }
+      ],
+      "actionId": "cb9a6cf3-4f5c-4860-b9d2-03a574959774",
+      "args": {
+        "+x": "start.sh"
+      },
+      "continueOnError": true
+    },
+    {
+      "description": "Make stop.sh executable.",
+      "manualInstructions": [
+        {
+          "text": "Run: chmod +x stop.sh"
+        }
+      ],
+      "actionId": "cb9a6cf3-4f5c-4860-b9d2-03a574959774",
+      "args": {
+        "+x": "stop.sh"
+      },
+      "continueOnError": true
+    }
+  ],
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [
+            ".git/**",
+            ".env",
+            "artifacts/**",
+            "**/bin/**",
+            "**/obj/**",
+            "**/.vs/**",
+            "**/*.user",
+            "LICENSE"
+          ]
+        }
+      ]
+    }
+  ]
+}
