@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="LoremIpsum.Api/LoremIpsum.Api.csproj" />
+  <Project Path="LoremIpsum.Api.Tests/LoremIpsum.Api.Tests.csproj" />
+  <Project Path="LoremIpsum.Core/LoremIpsum.Core.csproj" />
+  <Project Path="LoremIpsum.Infrastructure/LoremIpsum.Infrastructure.csproj" />
+  <Project Path="LoremIpsum.Web/LoremIpsum.Web.csproj" />
+</Solution>
